@@ -1,0 +1,9 @@
+/home/lisiting/OSDS-2022Fall/project1/CMakeFiles/rebuild_cache.dir
+/home/lisiting/OSDS-2022Fall/project1/CMakeFiles/proj1part2.dir
+/home/lisiting/OSDS-2022Fall/project1/CMakeFiles/edit_cache.dir
+/home/lisiting/OSDS-2022Fall/project1/part1/concurrent_queue/CMakeFiles/rebuild_cache.dir
+/home/lisiting/OSDS-2022Fall/project1/part1/concurrent_queue/CMakeFiles/concurrent_queue.dir
+/home/lisiting/OSDS-2022Fall/project1/part1/concurrent_queue/CMakeFiles/edit_cache.dir
+/home/lisiting/OSDS-2022Fall/project1/part1/utils/CMakeFiles/rebuild_cache.dir
+/home/lisiting/OSDS-2022Fall/project1/part1/utils/CMakeFiles/utils.dir
+/home/lisiting/OSDS-2022Fall/project1/part1/utils/CMakeFiles/edit_cache.dir

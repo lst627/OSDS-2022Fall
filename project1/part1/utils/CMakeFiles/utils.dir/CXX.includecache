@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lisiting/OSDS-2022Fall/project1/part1/utils/utils.cc
+cmath
+-
+string
+-
+iostream
+-
+chrono
+-
+thread
+-
+utils.h
+/home/lisiting/OSDS-2022Fall/project1/part1/utils/utils.h
+
+/home/lisiting/OSDS-2022Fall/project1/part1/utils/utils.h
+string
+-
+vector
+-
+iostream
+-
+chrono
+-
+

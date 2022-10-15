@@ -1,0 +1,2 @@
+/usr/bin/ar qc libconcurrent_queue.a  CMakeFiles/concurrent_queue.dir/concurrent_queue.cc.o
+/usr/bin/ranlib libconcurrent_queue.a
