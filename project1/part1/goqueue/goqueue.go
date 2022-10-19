@@ -1,4 +1,4 @@
-package concurrent_queue
+package goqueue
 
 type ConcurrentQueue struct {
 	queue chan string 

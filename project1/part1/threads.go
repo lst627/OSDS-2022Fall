@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"sync"
 	"time"
-	"./concurrent_queue"
+	"./goqueue"
 )
 
 var wg = sync.WaitGroup{}
 
-func Request (Q *concurrent_queue.ConcurrentQueue)() {
+func Request (Q *goqueue.ConcurrentQueue)() {
 	var res int
 	var str string = "a"
 	res = Q.Enqueue(str)
@@ -29,7 +29,7 @@ func main() {
 	var load int = 10
 	var capacity int = 7
 
-    var Q *concurrent_queue.ConcurrentQueue = concurrent_queue.NewQueue();
+    var Q *goqueue.ConcurrentQueue = goqueue.NewQueue();
 	Q.Init(capacity)
 	wg.Add(load)
     
