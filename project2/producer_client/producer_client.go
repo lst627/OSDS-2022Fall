@@ -17,7 +17,7 @@ func AddTasks (Q chan string, csvpath string, st int, ed int, wg *sync.WaitGroup
 	defer f.Close()
 	r := csv.NewReader(f)
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 2000; i++ {
 		row, err := r.Read()
 		if err != nil && err != io.EOF {
 			log.Println("Read csv failed")

@@ -24,6 +24,7 @@ type GetImg struct {
 }
 
 var Pool chan struct{}
+var Count int
 
 func (t *GetImg) GetSingleImg(request *Request, reply *Reply) error {
 	// convert key to path !!!!!
@@ -53,8 +54,9 @@ func (t *GetImg) GetSingleImg(request *Request, reply *Reply) error {
 	return nil
 }
 
-func (t *GetImg) GetQueueLength()(int){
-	return len(Pool)
+func (t *GetImg) GetQueueLength(request *Request, reply *int) error {
+	*reply = Count
+	return nil
 }
 
 func main() {
@@ -67,7 +69,7 @@ func main() {
 		log.Fatal(err)
 	} 
 	//rpc.HandleHTTP()
-	l, err := net.Listen("tcp", ":6004")
+	l, err := net.Listen("tcp", ":6005")
 	if err != nil {
 		log.Println("Server error")
 		log.Fatal(err)
@@ -75,6 +77,7 @@ func main() {
 	log.Println("Ready to work!")
 	for {
 		conn, err := l.Accept()
+		Count += 1
 		if err != nil {
 			log.Println("Accept error")
 			log.Fatal(err)
@@ -82,8 +85,9 @@ func main() {
 		log.Println("Request accepted")
 		go func() {
 			Pool <- struct{}{}
+			Count -= 1
 			defer func() { <- Pool}()
-			go rpc.ServeConn(conn) 
+			rpc.ServeConn(conn) 
 		}()
 	}
 	// go http.Serve(l, nil)

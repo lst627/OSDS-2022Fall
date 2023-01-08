@@ -32,7 +32,7 @@ func main() {
 	task_queue := make(chan string, capacity)
 
 	serverAddress := "10.1.0.15" //  //"122.200.68.26"
-	portNumber := "6004"  //"8015"
+	portNumber := "6005"  //"8015"
 	client, err := rpc.Dial("tcp", serverAddress + ":" + portNumber)
 	if err != nil {
 		log.Println("Client dial failed")

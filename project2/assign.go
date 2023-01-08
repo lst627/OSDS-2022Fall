@@ -4,7 +4,7 @@ import (
 	"os/exec"
 	"log"
 	"fmt"
-	//"os"
+	"os"
 	"strconv"
 )
 
@@ -19,8 +19,8 @@ func main() {
 		if i == (num_processes - 1) {end = 2000}
 		cmd := exec.Command("./client", "-start", fmt.Sprintf("%s", strconv.Itoa(start)),  "-end", fmt.Sprintf("%s", strconv.Itoa(end)))
 		// For debugging mode:
-		//cmd.Stdout = os.Stdout
-		//cmd.Stderr = os.Stderr
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
 		err := cmd.Start()
 		if err != nil {
 			log.Println("Fork error")
