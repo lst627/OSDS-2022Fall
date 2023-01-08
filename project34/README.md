@@ -1,21 +1,13 @@
 # README
 
-### Part 1 core code
+make build 
 
-go build server.go
+make deploy
 
-go build client.go
+make run_miner
 
-go build assign.go
+make run_client
 
-Then copy(deploy) the executable to the server (122.200.68.26: 8015) 
+make stop_miner
 
-Run "./server" in one window
-
-Run "./assign" in another window
-
-The output of client is not shown in the os.Stdout/os.Stderr, you can check the debugging mode in assign.go for changing the output.
-
-### Part 2 core code
-
-Not finished
+The output is in the txts on the server.
