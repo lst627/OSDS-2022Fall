@@ -59,7 +59,7 @@ func NewTranx(index int) {
 }
 
 func main() {    
-	num_tranx := 10
+	num_tranx := 50
 	serverAddresses := [5]string{"10.1.0.11", "10.1.0.12", "10.1.0.13", "10.1.0.14", "10.1.0.15"}   //"122.200.68.26"
 	portNumbers := "6353" 
 

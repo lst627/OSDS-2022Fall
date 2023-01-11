@@ -118,7 +118,7 @@ func (b *Blockchain) IsValid() bool {
 
 func (b *Blockchain) AddBlock(newBlock Block) bool {
 	if !b.IsValid() {
-		// b.Chain = []Block{b.GenesisBlock}
+		b.Chain = []Block{b.GenesisBlock}
 		return false
 	}
 	b.Chain = append(b.Chain, newBlock)
@@ -169,12 +169,14 @@ func Login(initserverAddresses [5]string, clientAddress string, portnumber strin
 	}
 }
 
-func BroadcastBlock(miner *rpc.Client, send Block, wg *sync.WaitGroup) {
+func BroadcastBlock(minerid string, send Block, wg *sync.WaitGroup) {
 	var reply bool
+	miner := peers[minerid]
 	divCall := miner.Go("MinerHandler.GetBlock", &send, &reply, nil)
 	replyCall := <-divCall.Done
 	if replyCall.Error != nil {
 		log.Println("Error: ", replyCall.Error)
+		delete(peers, minerid)
 	}
 	wg.Done()
 }
@@ -190,8 +192,8 @@ func (g *MinerHandler) GetTransaction(request *Request, reply *bool) error {
 	if send.Index >= 0 {
 		var wg = sync.WaitGroup{}
 		wg.Add(len(peers))
-		for _, miner := range peers {
-			go BroadcastBlock(miner, send, &wg) 
+		for id, _ := range peers {
+			go BroadcastBlock(id, send, &wg) 
 		}
 		wg.Wait()
 	}
@@ -224,7 +226,7 @@ func (g *MinerHandler) GetNewPeer(request *NewPeer, reply *bool) error {
 func main() {
 	var difficulty int
 	var portnumber string
-	Q = make(chan Block, 50)
+	Q = make(chan Block, 100)
 	num_tranx = -1
 	peers = make(map[string]*rpc.Client)
 	
